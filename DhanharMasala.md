@@ -67,6 +67,8 @@
   - [6.6 Stock Transfer](#66-stock-transfer)
   - [6.7 Stock Transfer Report](#67-stock-transfer-report)
   - [6.8 Godown Wise Stock](#68-godown-wise-stock)
+- [7. Reports](#7-reports)
+  - [7.1 Order Sales Report](#71-order-sales-report)
 
 ## Core Principles & Scope
 
@@ -1720,3 +1722,34 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 **Bottom row:** Total row (per godown block)
 
 **Structure:** Multiple godown blocks stacked vertically, each with its own header bar (godown name) and full table.
+
+## 7. Reports
+
+### 7.1 Order Sales Report
+
+**Purpose:** Lists sales orders with drill-down groupings (by Item, Broker, City, Party, or combinations) and status filters (Pending, Ordered, Completed), showing order-level and buyer-level detail with unit, quantity, rate, and value.
+
+**Fields:**
+
+- **Quality** — multi-select dropdown ("Select Some Options"), filters by item/quality. Appears/disappears depending on which grouping tab is active.
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears when grouping includes Broker.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **Status** — radio buttons: Pending, Ordered, Ordered, Completed
+- **Grouping tabs** — button-style toggle group: Item, Broker City, City Broker, Broker Item, Item Broker, City Item, Item City, Broker Party, City Party, Party Item, Item Party. Determines how the table is grouped/sub-grouped (e.g. "Broker City" groups by broker then city).
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- Heart icon — next to heading
+- Gear/settings icon — top right
+- `Print` icon (green) — top right
+- `Go` — applies filters and refreshes table
+- Sort arrows — on sortable column headers
+- Order No — clickable link per row, opens order detail (e.g. links to an Order Broker Item detail page)
+
+**Table columns:**
+Order No, Order Date, Haste, Broker, Buyer, Transporter, City, Quality, Unit, Quantity, Rate, Value
+
+**Grouping rows:** When a grouping tab (e.g. Broker City, City Broker) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "SURAT", "555 HING POWDER 1 KG") showing aggregated Unit, Quantity, and Value for that group before listing individual line items underneath.

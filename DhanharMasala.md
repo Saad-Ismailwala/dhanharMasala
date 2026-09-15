@@ -81,6 +81,7 @@
   - [7.11 TCS Matrix](#711-tcs-matrix)
 - [8. Tax](#8-tax)
   - [8.1 GST Summary](#81-gst-summary)
+  - [8.2 Form GSTR1](#82-form-gstr1)
 
 ## Core Principles & Scope
 
@@ -2131,3 +2132,37 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 **Rows (Sales section - A):** B2B, B2CL, B2CS, EXEMP, Sales Total; Sales Return sub-section with CDNR (Sales Return, Sales Creditnote, Sales Debitnote) and CDNUR (Sales Return, Sales Creditnote, Sales Debitnote), Sales Return Total, GSTR-1 Form
 
 **Rows (Purchase section):** B2B, B2BUR, IMP_G, IMP_S, EXEMP, Purchase Total; Purchase Return sub-section with CDNR (Purchase Return, Purchase Debitnote, Purchase Creditnote) and CDNUR (Purchase Return, Purchase Debitnote, Purchase Creditnote), Purchase Return Total, GSTR-2 Form
+
+### 8.2 Form GSTR1
+
+**Purpose:** Prepares and displays GSTR-1 return data by section (B2B, B2CL, B2CS, CDNR, CDNUR, EXP, AT, ATADJ, EXEMP, HSN, DOCS, and amendment variants), for a selected branch/GSTIN and date range, with GSTN verification and multi-format export.
+
+**Navigation:** Home / Tax / GSTR1
+
+**Fields:**
+
+- **Section toggle (primary)** — radio buttons: B2B, B2CL, B2CS, CDNR, CDNUR, EXP, AT, ATADJ, EXEMP, HSN, DOCS
+- **Section toggle (amendment)** — radio buttons: b2ba, b2cla, b2csa, cdnra, cdnura, expa, ata, atadj
+- **Branch/GSTIN** — multi-select tag input (e.g. "BHAGAL BRANCH - 24AANFD1775C1ZM"), removable tag
+- **Date range** — from date, to date (e.g. 01-09-2023 to 30-09-2023)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Verify with GSTN` — top right, validates data against GSTN portal
+- `Gear/settings icon` — top right
+- `Print icon` — below section toggles
+- `File/document icon` — below section toggles
+- `Email icon` — below section toggles
+- `Export icons` (multiple colored, 5x) — below section toggles, likely different export formats (Excel, JSON, etc.)
+- `GO` — applies filters and refreshes table
+
+**Table columns (summary row):**
+
+| (blank) | (blank) | Rate | Total Taxable Value | Total Cess | (blank) | Book |
+| ------- | ------- | ---- | ------------------- | ---------- | ------- | ---- |
+
+**Table columns (detail rows):**
+
+| Type | Invoice No | Place of Supply | Rate | Taxable Value | Cess Amount | E-Commerce GSTN | Book |
+| ---- | ---------- | --------------- | ---- | ------------- | ----------- | --------------- | ---- |

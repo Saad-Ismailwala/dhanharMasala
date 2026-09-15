@@ -79,6 +79,8 @@
   - [7.9 Party Balance](#79-party-balance)
   - [7.10 TCS/TDS Party](#710-tcstds-party)
   - [7.11 TCS Matrix](#711-tcs-matrix)
+- [8. Tax](#8-tax)
+  - [8.1 GST Summary](#81-gst-summary)
 
 ## Core Principles & Scope
 
@@ -2097,3 +2099,35 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 | --- | ---- | ------ | ----------- |
 
 **Bottom row:** Total row
+
+## 8. Tax
+
+### 8.1 GST Summary
+
+**Purpose:** Shows a GST liability summary for a selected branch/GSTIN and date range, broken into Sales, Sales Return, Purchase, and Purchase Return sections with taxable value and CGST/SGST/IGST breakup, culminating in GSTR-1 and GSTR-2 form totals.
+
+**Navigation:** Home / Tax / GST
+
+**Fields:**
+
+- **Branch/GSTIN** — multi-select tag input (e.g. "BHAGAL BRANCH - 24AANFD1775C1ZM"), removable tag
+- **Date range** — from date, to date (e.g. 01-09-2024 to 30-09-2024)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Export icon` (blue) — next to branch selector
+- `Gear/settings icon` — top right
+- `GO` — applies filters and refreshes table
+- `Print` — top right
+- `Excel` — top right
+- Row-level icons (blue) — per detail row (e.g. B2B, B2CL, B2CS, EXEMP, B2BUR, IMP_G, IMP_S), likely drill-down/export per line
+
+**Table columns:**
+
+| Detail | Taxable | CGST | SGST | IGST | Total | Liability |
+| ------ | ------- | ---- | ---- | ---- | ----- | --------- |
+
+**Rows (Sales section - A):** B2B, B2CL, B2CS, EXEMP, Sales Total; Sales Return sub-section with CDNR (Sales Return, Sales Creditnote, Sales Debitnote) and CDNUR (Sales Return, Sales Creditnote, Sales Debitnote), Sales Return Total, GSTR-1 Form
+
+**Rows (Purchase section):** B2B, B2BUR, IMP_G, IMP_S, EXEMP, Purchase Total; Purchase Return sub-section with CDNR (Purchase Return, Purchase Debitnote, Purchase Creditnote) and CDNUR (Purchase Return, Purchase Debitnote, Purchase Creditnote), Purchase Return Total, GSTR-2 Form

@@ -69,6 +69,8 @@
   - [6.8 Godown Wise Stock](#68-godown-wise-stock)
 - [7. Reports](#7-reports)
   - [7.1 Order Sales Report](#71-order-sales-report)
+  - [7.2 Order Purchase Report](#72-order-purchase-report)
+  - [7.3 Invoice Sales Report](#73-invoice-sales-report)
 
 ## Core Principles & Scope
 
@@ -1753,3 +1755,60 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 Order No, Order Date, Haste, Broker, Buyer, Transporter, City, Quality, Unit, Quantity, Rate, Value
 
 **Grouping rows:** When a grouping tab (e.g. Broker City, City Broker) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "SURAT", "555 HING POWDER 1 KG") showing aggregated Unit, Quantity, and Value for that group before listing individual line items underneath.
+
+### 7.2 Order Purchase Report
+
+**Purpose:** Lists purchase orders with drill-down groupings (by Item, Broker, City, Party, or combinations) and status filters (Pending, Ordered, Completed), showing order-level and supplier-level detail with unit, quantity, rate, and value.
+
+**Fields:**
+
+- **Quality** — multi-select dropdown ("Select Some Options"), filters by item/quality. Appears/disappears depending on which grouping tab is active.
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears when grouping includes Broker.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **Status** — radio buttons: Pending, Ordered, Ordered, Completed
+- **Grouping tabs** — button-style toggle group: Item, Broker City, City Broker, Broker Item, Item Broker, City Item, Item City, Broker Party, City Party, Party Item, Item Party. Determines how the table is grouped/sub-grouped (e.g. "City Broker" groups by city then broker).
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- Heart icon — next to heading
+- Gear/settings icon — top right
+- `Print` icon (green) — top right
+- `Go` — applies filters and refreshes table
+- Sort arrows — on sortable column headers
+- Order No — clickable link per row, opens order detail
+
+**Table columns:**
+Order No, Order Date, Haste, Broker, Supplier, Transporter, City, Quality, Unit, Quantity, Rate, Value
+
+**Grouping rows:** When a grouping tab (e.g. Broker City, City Broker) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "SURAT", "NAVI MUMBAI") showing aggregated Unit and Quantity for that group before listing individual line items underneath. With City Broker grouping, city-level subtotals contain nested broker-level subtotals.
+
+### 7.3 Invoice Sales Report
+
+**Purpose:** Lists sales invoices with drill-down groupings (by Item, Broker, City, Party, or combinations), showing invoice-level and buyer-level detail with unit, quantity, net meter, taxable amount, and tax breakup (SGST, CGST, IGST).
+
+**Fields:**
+
+- **Quality** — multi-select dropdown ("Select Some Options"), filters by item/quality. Appears/disappears depending on which grouping tab is active.
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears when grouping includes Broker.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **Grouping tabs** — button-style toggle group: Item, Broker City, City Broker, Broker Item, Item Broker, City Item, Item City, Broker Party, City Party, Party Item, Item Party. Determines how the table is grouped/sub-grouped (e.g. "Broker City" groups by broker then city).
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- Heart icon — next to heading
+- Gear/settings icon — top right
+- `Print` icon (green) — top right
+- `Go` — applies filters and refreshes table
+- Sort arrows — on sortable column headers
+- Invoice No — clickable link per row, opens invoice detail
+
+**Table columns:**
+Invoice No, Bale No, Broker, Invoice Date, Buyer, City, Quality, Unit, Quantity, Net Meter, Taxable Amount, SGST, CGST, IGST, Amount
+
+**Grouping rows:** When a grouping tab (e.g. Broker City) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "# SURAT") showing aggregated Unit, Quantity, Net Meter, Taxable Amount, SGST, CGST, IGST, and Amount for that group before listing individual line items underneath.

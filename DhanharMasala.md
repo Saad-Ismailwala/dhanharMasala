@@ -85,6 +85,14 @@
   - [8.3 GSTR2](#83-gstr2)
   - [8.4 GSTR2 Reco](#84-gstr2-reco)
   - [8.5 GSTR3B](#85-gstr3b)
+  - [8.6 GST Register](#86-gst-register)
+  - [8.7 State Wise GST Report](#87-state-wise-gst-report)
+  - [8.8 GSTR9](#88-gstr9)
+  - [8.9 TDS Statement](#89-tds-statement)
+  - [8.10 TDS Rate](#810-tds-rate)
+  - [8.11 GST ITC-04](#811-gst-itc-04)
+  - [8.12 GST State Wise Summary](#812-gst-state-wise-summary)
+  - [8.13 Depreciation Rate](#813-depreciation-rate)
 
 ## Core Principles & Scope
 
@@ -2323,3 +2331,227 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 | ------- | -------------- | ----------- | ------------ |
 
 **Rows:** TDS, TCS
+
+### 8.6 GST Register
+
+**Purpose:** Shows a month-wise (Apr–Mar, financial year) register of CGST, SGST, and IGST payable and receivable amounts for a selected branch/GSTIN, with a total row.
+
+**Navigation:** Home / GST / GST Register
+
+**Fields:**
+
+- **Branch/GSTIN** — dropdown (e.g. "BHAGAL BRANCH - 24AANFD...")
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Go` — applies branch filter and refreshes table
+- `Print icon` (green) — top right
+- `Excel export icon` (green) — top right
+- `PDF export icon` (green) — top right
+
+**Table columns:**
+
+| #   | Month | CGST Pay | CGST Rec | SGST Pay | SGST Rec | IGST Pay | IGST Rec |
+| --- | ----- | -------- | -------- | -------- | -------- | -------- | -------- |
+
+**Rows:** Apr-2023 through Mar-2024 (12 months), Total
+
+### 8.7 State Wise GST Report
+
+**Purpose:** Shows a state-wise breakdown of taxable value and tax payable (IGST, CGST, SGST) for Sales or Purchase transactions over a selected date range, with a total row.
+
+**Navigation:** Home / Statecode / Statecode Report
+
+**Fields:**
+
+- **Type** — dropdown (e.g. Sales; likely also Purchase)
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading (not visible but consistent with pattern)
+- `Go` (blue) — applies filters and refreshes table
+- `Print icon` (green) — top right
+- `Excel export icon` (green) — top right
+
+**Table columns:**
+
+| Statewise | Taxable Value | IGST Payable | CGST Payable | SGST Payable |
+| --------- | ------------- | ------------ | ------------ | ------------ |
+
+**Rows:** One row per state (e.g. 24-Gujarat, 27-Maharashtra, 3-Punjab, 33-Tamil Nadu, 5-Uttarakhand, 7-Delhi, 8-Rajasthan, 9-Uttar Pradesh), Total Sales
+
+### 8.8 GSTR9
+
+**Purpose:** Generates the GSTR-9 annual return by downloading category-wise transaction data (sales, purchase, journal, mill, value addition invoices) for a selected financial year, plus HSN and ITC table exports.
+
+**Navigation:** Home / GST / GSTR 9
+
+**Fields:**
+
+- **Financial Year** — dropdown (e.g. 2024-25)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `GSTR-9 Return Format` (green link) — opens/downloads the official return format
+- `Table 17 – HSN Outward` (orange) — downloads HSN outward summary
+- `Table 18 – HSN Inward` (orange) — downloads HSN inward summary
+- `Tables 4 & 5 – Outward` (blue) — downloads outward supplies tables
+- `Table 6 – ITC` (orange) — downloads ITC table
+- Per-row download icon — Action column, downloads that category's data
+
+**Table columns:**
+
+| SR  | Name | Action |
+| --- | ---- | ------ |
+
+**Rows:** Sales Invoice, Sales Return, Sales Credit, Sales Debit, Sales Journal, Purchase Invoice, Purchase Return, Purchase Credit, Purchase Debit, Purchase Journal Invoice, Purchase Journal Invoice 1, Mill Invoice, Value Addition Invoice
+
+### 8.9 TDS Statement
+
+**Purpose:** Lists TDS entries (on bill and on payment) with PAN, section, and rate details, filtered by voucher type, month, company/party, and section grouping, with a total row.
+
+**Navigation:** Home / Tax / TDS Statement
+
+**Fields:**
+
+- **Voucher type** — dropdown (e.g. TDS ON BILL)
+- **Month** — dropdown (e.g. Apr)
+- **Company/Party** — dropdown (e.g. Bagreeji Smart Products LLP)
+- **Entity type** — dropdown (e.g. Company)
+- **Section** — dropdown (e.g. 192)
+- **Grouping** — dropdown (e.g. SectionWise)
+- **Date range** — from date, to date (e.g. 01-04-2023 to 30-04-2023)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Print icon` (blue) — top right
+- `Excel export icon` (green) — top right
+- `Print icon` (orange) — top right
+- `GO` — applies filters and refreshes table
+
+**Table columns:**
+
+| Date | Invoice No | Particular | LFNO | Voucher No | PAN No | TDS Account | Section | Code | Value | Rate | TDS |
+| ---- | ---------- | ---------- | ---- | ---------- | ------ | ----------- | ------- | ---- | ----- | ---- | --- |
+
+**Bottom row:** Total row (sums Value, Rate, TDS)
+
+### 8.10 TDS Rate
+
+**Purpose:** Master list of TDS sections/rates by nature of payment (old and new section codes), with individual/others rate, threshold, threshold type, and remarks — switchable between FY periods (legacy vs current section mapping).
+
+**Navigation:** Home / Tax / TDS Rate - FY 2026-27 onwards
+
+**Fields:**
+
+- **FY toggle** — button group: FY 2025-26 (legacy), FY 2026-27 onwards
+- **Search** — text box, searches across table
+- **Rate Individual** — editable numeric input, per row
+- **Rate Others** — editable numeric input, per row
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Refresh icon` — top right, reloads data
+- `Gear/settings icon` — top right
+- Sort arrows — implied on column headers (not clearly visible but consistent with pattern)
+
+**Table columns:**
+
+| SR  | Code | Old Section | New Section | Nature of Payment | Rate Individual | Rate Others | Threshold | Threshold Aggregate | Threshold Type | Remarks |
+| --- | ---- | ----------- | ----------- | ----------------- | --------------- | ----------- | --------- | ------------------- | -------------- | ------- |
+
+### 8.11 GST ITC-04
+
+**Purpose:** Prepares the ITC-04 form for goods sent to/received from job workers — tracking challan-wise goods sent to job worker (Mfg to JW) or received back (JW to Mfg), with quantity, taxable value, tax rate, and GSTN validation, for a selected branch/GSTIN and date range.
+
+**Navigation:** Home / Tax / GST ITC-04
+
+**Fields:**
+
+- **Direction toggle** — radio buttons: Mfg_to_JW, JW to Mfg
+- **Branch/GSTIN** — dropdown (e.g. "BHAGAL BRANCH - 24AANFD1775C1ZM")
+- **Date range** — from date, to date (e.g. 01-01-2023 to 31-01-2023)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Print icon` — top left of table
+- `File/document icon` — top left of table
+- `Email icon` — top left of table
+- `Export icon` — top left of table
+- `GSTN Template` (orange) — top left of table, exports in GSTN template format
+- `GO` — applies filters and refreshes table
+- `Book` — per-row action, marks entry as booked
+- `Action` — per-row action, additional row action
+
+**Table columns (Mfg_to_JW):**
+
+| GSTIN of Job Worker (JW) | State (In Case of Unregistered) | Job Work's Type | Challan Number | Challan Date (DD-MM-YYYY) | Types of Goods | Description of Goods | Unique Quantity Code(UQC) | Quantity | Taxable Value (In Rupees) | Integrated Tax Rate in(%) | Central Tax Rate in(%) | State/UT Tax Rate in(%) | Cess | Action | Sheet Validation Error(s) | GST Portal Validation Error(s) | Book |
+| ------------------------ | ------------------------------- | --------------- | -------------- | ------------------------- | -------------- | -------------------- | ------------------------- | -------- | ------------------------- | ------------------------- | ---------------------- | ----------------------- | ---- | ------ | ------------------------- | ------------------------------ | ---- |
+
+**Table columns (JW to Mfg):**
+
+| GSTIN of Job Worker (JW) | State (In Case of Unregistered JW) | Jobwork Type | Challan Number | Challan Date | Types of Goods | Description of Goods | Unique Quantity Code(UQC) | Quantity | Taxable Value | Integrated Tax Rate in(%) | Central Tax Rate in(%) | State/UT Tax Rate in(%) | Cess | Action | Sheet Validation Error(s) | GST Portal Validation Error(s) | Book |
+| ------------------------ | ---------------------------------- | ------------ | -------------- | ------------ | -------------- | -------------------- | ------------------------- | -------- | ------------- | ------------------------- | ---------------------- | ----------------------- | ---- | ------ | ------------------------- | ------------------------------ | ---- |
+
+**Bottom row:** Total row (sums Quantity, Taxable Value)
+
+### 8.12 GST State Wise Summary
+
+**Purpose:** Shows a consolidated summary of Sales and Purchase transactions (journal, returns, credit notes, debit notes, mill, value addition) with taxable value and CGST/SGST/IGST breakup, for a selected branch/GSTIN and date range, culminating in GSTR-1 and GSTR-2 form totals.
+
+**Navigation:** Home / Tax / GST
+
+**Fields:**
+
+- **Branch/GSTIN** — multi-select tag input (e.g. "BHAGAL BRANCH - 24AANFD1775C1ZM"), removable tag
+- **Date range** — from date, to date (e.g. 01-09-2026 to 30-09-2026)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `GO` — applies filters and refreshes table
+- `Print` — top right
+- `Excel` — top right
+
+**Table columns:**
+
+| Detail | Taxable | CGST | SGST | IGST | Total |
+| ------ | ------- | ---- | ---- | ---- | ----- |
+
+**Rows (A) Sales:** Sales Total; Sales Journal — Sales Journal Total; Sales Return — Sales Return (Goods), Sales Return Total; Sales Creditnot — Sales Creditnote Total; Sales Debitnote — Sales Debitnote Total; GSTR-1 Form
+
+**Rows (B) Purchase:** Purchase — Purchase Total; Purchase Journal — Purchase Journal Total; Mill — Mill Total; Value Addition — Value-Addition Total; Purchase Return — Purchase Return(Goods), Purchase Return Total; Purchase Creditnot — Purchase Creditnote Total; Purchase Debitnote — Purchase Debitnote Total; GSTR-2 Form
+
+### 8.13 Depreciation Rate
+
+**Purpose:** Lists fixed assets with their book amount, editable applicable depreciation rate, calculated depreciation, and expected closing amount — used to configure and preview depreciation across asset categories.
+
+**Navigation:** Home / Tax / Depreciation Rate
+
+**Fields:**
+
+- **Applicable Rate** — editable numeric input, per row
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- Sort arrows — implied on column headers (consistent with pattern, not clearly visible)
+
+**Table columns:**
+
+| SR  | Fixed Asset | Amount | Applicable Rate | Depreciation | Exp Closing Amount |
+| --- | ----------- | ------ | --------------- | ------------ | ------------------ |
+
+**Rows:** Account Softwer(Asset), Air Condition (Asset), Civil Eaxpenses, Computer Assets, Electric Saman (Asset), Fire Extinguisher, Funiture (Asset), Ichhapor Building(Asset), Machinery (Asset), Mobile(Asset), Motor Car, Packing Machinery(Asset), Printer (Asset), Scooter, TV(Assest)

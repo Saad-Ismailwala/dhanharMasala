@@ -73,6 +73,7 @@
   - [7.3 Invoice Sales Report](#73-invoice-sales-report)
   - [7.4 Invoice Purchase Report](#74-invoice-purchase-report)
   - [7.5 Outstanding Sales Report](#75-outstanding-sales-report)
+  - [7.6 Brokerage Sales Report](#76-brokerage-sales-report)
 
 ## Core Principles & Scope
 
@@ -1897,3 +1898,37 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 | ---------- | ---- | ----- | ------ | ---- | ---- | -------- | ---- | -------- | ------ | ------- | ------- | ---------- | ----------- | ---------- |
 
 **Grouping rows:** When a grouping tab is active (e.g. Broker Party), the table inserts a subtotal header row per party (e.g. "VIMAL TRADING CO") showing aggregated Unit, Quantity, Amount, Receive, and Pending for that party before listing individual invoice line items underneath. Empty result sets (e.g. City Broker, Area Party, AreaCode Party groupings in this dataset) show no rows below the header.
+
+### 7.6 Brokerage Sales Report
+
+**Purpose:** Lists brokerage-related sales invoices with drill-down groupings (by Party, Broker, City), showing tax breakup, discount, returns, net amount received, and voucher/cheque details per invoice, grouped by broker/party/city blocks.
+
+**Navigation:** Home / Report / Brokerage Sales
+
+**Fields:**
+
+- **Party** — multi-select dropdown ("Select Some Options"), filters by buyer/party. Appears when grouping includes Party.
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears when grouping includes Broker.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **View mode** — radio buttons: SubGroup, Group
+- **Date type** — radio buttons: VoucherDate, ChequeDate
+- **Grouping tabs** — button-style toggle group: Broker Party, Party Broker, Broker City, City Broker
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Excel export icon` (green) — top right
+- `Print icon` (green) — top right
+- `Go` — applies filters and refreshes table
+- `Sort arrows` — on sortable column headers
+
+**Table columns:**
+
+| Invoice No | Date | Buyer | Broker | City | Taxable | SGST | CGST | IGST | Total Tax | Discount | Rate Diff | Return Goods | Net Amount | Received | Voucher No | Voucher Date | Bank Name | Cheque Date | Cheque No |
+| ---------- | ---- | ----- | ------ | ---- | ------- | ---- | ---- | ---- | --------- | -------- | --------- | ------------ | ---------- | -------- | ---------- | ------------ | --------- | ----------- | --------- |
+
+**Grouping rows:** When a grouping tab is active (e.g. Broker Party), the table inserts subtotal header rows per broker and per party (e.g. "NO BROKER NAME", "SHRI SAI TRADERS", "VIMAL TRADING CO") showing aggregated Taxable, SGST, CGST, IGST, Discount, Rate Diff, Return Goods, Net Amount, and Received for that group before listing individual invoice line items underneath. Other groupings (Party Broker, Broker City, City Broker) return empty result sets in this dataset (table shows a "Processing..." state with no rows).

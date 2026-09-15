@@ -82,6 +82,9 @@
 - [8. Tax](#8-tax)
   - [8.1 GST Summary](#81-gst-summary)
   - [8.2 Form GSTR1](#82-form-gstr1)
+  - [8.3 GSTR2](#83-gstr2)
+  - [8.4 GSTR2 Reco](#84-gstr2-reco)
+  - [8.5 GSTR3B](#85-gstr3b)
 
 ## Core Principles & Scope
 
@@ -2166,3 +2169,157 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 
 | Type | Invoice No | Place of Supply | Rate | Taxable Value | Cess Amount | E-Commerce GSTN | Book |
 | ---- | ---------- | --------------- | ---- | ------------- | ----------- | --------------- | ---- |
+
+### 8.3 GSTR2
+
+**Purpose:** Prepares and displays GSTR-2 (purchase-side) return data by section (B2B, B2BUR, IMP_G, IMP_S, CDNR, CDNUR, AT, ATADJ, EXEMP, ITCR, HSNSUM), showing ITC availed and eligibility per invoice, for a selected branch/GSTIN and date range, with GSTN format export.
+
+**Navigation:** Home / Tax / GSTR2
+
+**Fields:**
+
+- **Section toggle** — radio buttons: B2B, B2BUR, IMP_G, IMP_S, CDNR, CDNUR, AT, ATADJ, EXEMP, ITCR, HSNSUM
+- **Branch/GSTIN** — multi-select tag input (e.g. "BHAGAL BRANCH - 24AANFD1775C1ZM"), removable tag
+- **Date range** — from date, to date (e.g. 01-09-2023 to 30-09-2023)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Print icon` — below section toggles
+- `GSTN Format` (green) — exports in GSTN format
+- `GSTN V1.1 (test)` (orange) — exports in GSTN V1.1 test format
+- `GO` — applies filters and refreshes table
+- `Book` — per-row action, marks invoice as booked
+- `Action` — per-row action, additional row action
+
+**Table columns (summary row):**
+
+| No of Recipients | No of Invoice | (blank) | Total Inv Value | (blank) | (blank) | (blank) | Total Taxable Value | IGST Total | CGST Total | SGST Total | Total Cess | (blank) | (blank) | (blank) | (blank) | (blank) | Book | Action |
+| ---------------- | ------------- | ------- | --------------- | ------- | ------- | ------- | ------------------- | ---------- | ---------- | ---------- | ---------- | ------- | ------- | ------- | ------- | ------- | ---- | ------ |
+
+**Table columns (detail rows):**
+
+| GSTIN of Supplier | Invoice Number | Invoice Date | Invoice Value | Place of Supply | Reverse Charge | Invoice Type | Rate | Taxable Value | Integrated Tax | Central Tax | State or UT Tax | Cess | Eligibility for ITC | Availed ITC Integrated Tax | Availed ITC Central Tax | Availed ITC State/UT Tax | Availed ITC Cess | Book | Action |
+| ----------------- | -------------- | ------------ | ------------- | --------------- | -------------- | ------------ | ---- | ------------- | -------------- | ----------- | --------------- | ---- | ------------------- | -------------------------- | ----------------------- | ------------------------ | ---------------- | ---- | ------ |
+
+### 8.4 GSTR2 Reco
+
+**Purpose:** Reconciles purchase register data (PWP) against GSTN 2A data — uploading 2A JSON, viewing summary counts/differences, generating supplier-wise reports, and matching/reviewing individual invoices (Purchase and CDNR) with tax and value differences.
+
+**Navigation:** Home / Master / GSTR2 RECO
+
+**Fields:**
+
+- **Date range** — from date, to date (e.g. 01-09-2023 to 30-09-2023)
+- **Tabs** — Prepare Reco, GSTN Wise Report, Match & Review
+- **(Prepare Reco tab) Reconciliation date range** — from date, to date (used with Reconciliation button)
+- **(Prepare Reco tab) Select Month of GSTR2 Excel** — dropdown/text input
+- **(Match & Review tab) Sub-tabs** — Purchase, CDNR
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Go` — applies top date range filter
+- **Prepare Reco tab:**
+  - `2A Json` (orange) — uploads GSTN 2A JSON data
+  - `Reconciliation` (blue) — runs reconciliation between GSTN and purchase data
+  - `GSTR2 Excel` (orange) — exports/generates GSTR2 Excel for selected month
+- **GSTN Wise Report tab:**
+  - `Print` (green) — prints report
+  - `Excel` (green) — exports report
+  - `View All` — per supplier row, opens full detail
+- **Match & Review tab:**
+  - `Print` (green) — prints match/review data
+  - `Excel` (green) — exports match/review data
+
+**Table columns (Prepare Reco — Summary 2023-2024, left):**
+
+| 2A  | (value) |
+| --- | ------- |
+
+**Table columns (Prepare Reco — Summary 2023-2024, right):**
+
+| Month | B2B-2A | B2B-2 | CDNR-2A | CDNR-2 |
+| ----- | ------ | ----- | ------- | ------ |
+
+**Table columns (GSTN Wise Report):**
+
+| Supplier Details | (sub-row label) | No of Docs | Docs Diff | Tax Value | Tax Difference | Taxable Value | Taxable Difference | Action |
+| ---------------- | --------------- | ---------- | --------- | --------- | -------------- | ------------- | ------------------ | ------ |
+
+**Rows:** All Supplier (with sub-rows PWP Data » and Suppier »)
+
+**Table columns (Match & Review — Purchase/CDNR):**
+
+| #   | Supplier (2A): Inv No, Inv Date, Taxable Value, Total Value, Tax Value | Tax Diff | PWP Data (Purchase Register): Inv No, Inv Date, Taxable Value, Total Value, Tax Value | Recon Status | Action |
+| --- | ---------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------- | ------------ | ------ |
+
+### 8.5 GSTR3B
+
+**Purpose:** Prepares and displays the GSTR-3B monthly summary return — outward supplies liable to tax, eligible ITC, exempt/nil-rated/non-GST inward supplies, interest & late fee payable, inter-state supplies to unregistered persons, and final tax payment/TDS-TCS credit — for a selected branch/GSTIN and date range.
+
+**Navigation:** Home / Tax / GSTR3B
+
+**Fields:**
+
+- **Branch/GSTIN** — multi-select dropdown ("Select Some Options")
+- **Date range** — from date, to date (e.g. 01-09-2023 to 30-09-2023)
+- **All amount fields across sections** — editable/read-only currency inputs (₹), most defaulting to 0.00
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading (not visible but consistent with pattern)
+- `GO` — applies filters and refreshes form
+- `GST Balance Matrix` (blue) — top right, opens balance matrix view
+- `Print icon` — top right
+- `Excel export icon` — top right
+- `Jv Entry` (green) — within section 6.1, creates a journal voucher entry
+
+**Section 3.1 — Details of Outward Supplies and inward supplies liable to reverse charge:**
+
+| Nature of Supplies | Total Taxable Value (₹) | Integrated Tax (₹) | Central Tax (₹) | State/UT Tax (₹) | Cess (₹) |
+| ------------------ | ----------------------- | ------------------ | --------------- | ---------------- | -------- |
+
+**Rows:** (A) Outward Taxable Supplies (Other Than Zero Rated, Nil Rated And Exempted), (B) Outward Taxable Supplies (Zero Rated), (C) Other Outward Supplies (Nil Rated, Exempted), (D) Inward Supplies (Liable To Reverse Charge), (E) Non-GST Outward Supplies
+
+**Section 4 — Eligible ITC:**
+
+| Details | Integrated Tax (₹) | Central Tax (₹) | State/UT Tax (₹) | Cess (₹) |
+| ------- | ------------------ | --------------- | ---------------- | -------- |
+
+**Rows:** (A) ITC Available (Whether In Full Or Part) — (1) Import Of Goods, (2) Import Of Services, (3) Inward Supplies Liable To Reverse Charge (Other Than 1 & 2 Above), (4) Inward Supplies From ISD, (5) All Other ITC; (B) ITC Reversed — (1) As Per Rules 42 & 43 Of CGST Rules, (2) Other; (C) Net ITC Available (A) – (B); (D) Ineligible ITC — (1) As Per Section 17(5), (2) Others
+
+**Section 5 — Values of exempt, nil-rated and non-GST inward supplies:**
+
+| Nature of Supplies | Inter-State Supplies (₹) | Intra-State Supplies (₹) |
+| ------------------ | ------------------------ | ------------------------ |
+
+**Rows:** From A Supplier Under Composition Scheme, Exempt And Nil Rated Supply; Non GST Supply
+
+**Section 5.1 — Interest & late fee payable:**
+
+| Description | Integrated Tax | Central Tax | State/UT Tax | Cess |
+| ----------- | -------------- | ----------- | ------------ | ---- |
+
+**Rows:** Interest
+
+**Section 3.2 — Of the supplies shown in 3.1(a), details of inter-state supplies made to unregistered persons, composition taxable person and UIN holders:**
+
+| Place of Supply (State/UT) | Total Taxable Value (₹) | Amount of Integrated Tax (₹) |
+| -------------------------- | ----------------------- | ---------------------------- |
+
+**Section 6.1 — Payment of Tax:**
+
+| Description | Tax Payable | Paid Through ITC (Integrated Tax, Central Tax, State/UT Tax, Cess) | Tax Paid TDS/TCS | Tax/Cess Paid In Cash | Interest | Late Fee |
+| ----------- | ----------- | ------------------------------------------------------------------ | ---------------- | --------------------- | -------- | -------- |
+
+**Rows:** Integrated Tax, Central Tax, State/UT, Cess, Total
+
+**Section 6.2 — TDS/TCS Credit:**
+
+| Details | Integrated Tax | Central Tax | State/UT Tax |
+| ------- | -------------- | ----------- | ------------ |
+
+**Rows:** TDS, TCS

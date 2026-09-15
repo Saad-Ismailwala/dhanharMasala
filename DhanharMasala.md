@@ -74,6 +74,11 @@
   - [7.4 Invoice Purchase Report](#74-invoice-purchase-report)
   - [7.5 Outstanding Sales Report](#75-outstanding-sales-report)
   - [7.6 Brokerage Sales Report](#76-brokerage-sales-report)
+  - [7.7 Interest Ledger](#77-interest-ledger)
+  - [7.8 Rate Send](#78-rate-send)
+  - [7.9 Party Balance](#79-party-balance)
+  - [7.10 TCS/TDS Party](#710-tcstds-party)
+  - [7.11 TCS Matrix](#711-tcs-matrix)
 
 ## Core Principles & Scope
 
@@ -1932,3 +1937,163 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 | ---------- | ---- | ----- | ------ | ---- | ------- | ---- | ---- | ---- | --------- | -------- | --------- | ------------ | ---------- | -------- | ---------- | ------------ | --------- | ----------- | --------- |
 
 **Grouping rows:** When a grouping tab is active (e.g. Broker Party), the table inserts subtotal header rows per broker and per party (e.g. "NO BROKER NAME", "SHRI SAI TRADERS", "VIMAL TRADING CO") showing aggregated Taxable, SGST, CGST, IGST, Discount, Rate Diff, Return Goods, Net Amount, and Received for that group before listing individual invoice line items underneath. Other groupings (Party Broker, Broker City, City Broker) return empty result sets in this dataset (table shows a "Processing..." state with no rows).
+
+### 7.7 Interest Ledger
+
+**Purpose:** Calculates interest on a party's outstanding balance over a date range, using configurable debit/credit interest rates and optional grace periods, showing total balance, interest, and total-with-interest.
+
+**Navigation:** Home / Accounting / Interest Ledger
+
+**Fields:**
+
+- **Select Party** — dropdown (e.g. Bagreeji Smart Products)
+- **Start Date** — date picker (e.g. 01-04-2023)
+- **End Date** — date picker (e.g. 31-03-2024)
+- **Dr %** — number input, debit interest rate
+- **Cr %** — number input, credit interest rate
+- **Enter Days** — number input, grace/calculation days
+- **Gp Dr** — text input, grace period for debit
+- **Gp Cr** — text input, grace period for credit
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Print icon` — top right
+- `Export icon` — top right
+- `GO` — applies filters and calculates interest
+- `Print` — below table, prints report
+- `Excel` — below table, exports report
+
+**Table columns:**
+
+| Name | Balance |
+| ---- | ------- |
+
+**Rows:** Total, Interest, Total With Interest
+
+### 7.8 Rate Send
+
+**Purpose:** Bulk-uploads rates via file import and sends rate information to parties via email, with a party selection list (2,101 parties) supporting search and multi-select.
+
+**Navigation:** Home / Master / Rate Sent
+
+**Fields:**
+
+- **Choose file** — file upload input, no file chosen by default
+- **Show entries** — dropdown (e.g. 100) controlling rows per page (upload-results table)
+- **Search** — text box (upload-results table)
+- **Select All** — checkbox, selects all parties in the list below
+- **Search** — text box (party list table)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Choose file` — opens file picker for rate upload
+- `Send Email` — sends rate info to selected parties
+- `Previous` / `Next` — pagination (upload-results table)
+- Sort arrows — on Party Name, Email, Mobile columns (party list table)
+- Per-row checkbox — Select column, selects individual party
+
+**Table columns (upload results):**
+
+| #   | Name | Select |
+| --- | ---- | ------ |
+
+**Table columns (party list):**
+
+| SR  | Party Name | Email | Mobile | Select |
+| --- | ---------- | ----- | ------ | ------ |
+
+### 7.9 Party Balance
+
+**Purpose:** Lists all parties with registration, address, and balance details — opening/closing credit and debit balances per party — with per-column inline filters, sorting, search, and pagination (2,127 entries).
+
+**Navigation:** Home / Master / View Party Broker (sidebar label: Party Balance)
+
+**Fields:**
+
+- **Select Some Options** — multi-select dropdown, top of page, filters party list
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Per-column filter inputs** — text boxes under each header (Name, Group, Registration Date, Address, City, State, Contact Person, Type, Opening Credit, Opening Debit, Type)
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Go` — applies top filter and refreshes table
+- `Gear/settings icon` — top right
+- `Print icon` (green) — top right
+- `Excel export icon` (green) — top right
+- `PDF export icon` (green) — top right
+- Sort arrows — on Name, City sortable columns
+- `Previous` / page numbers / `Next` — pagination
+
+**Table columns:**
+
+| SR  | Name | Group | Registration Date | Address | City | State | Contact Person | Type | Opening Credit | Opening Debit | Credit Balance | Debit Balance | Closing Credit | Closing Debit | Type |
+| --- | ---- | ----- | ----------------- | ------- | ---- | ----- | -------------- | ---- | -------------- | ------------- | -------------- | ------------- | -------------- | ------------- | ---- |
+
+### 7.10 TCS/TDS Party
+
+**Purpose:** Shows party-wise TCS/TDS applicability data (Taka, Meter, Net Meter, Taxable Value, Invoice Value) for Purchase/Sales TCS/TDS, with a mode toggle and per-row action checkbox, likely to mark/include parties for TCS/TDS calculation.
+
+**Navigation:** Home / Reports / Purchase TCS Party
+
+**Fields:**
+
+- **Mode toggle** — radio buttons: Purchase TDS Party, Purchase TCS Party, Sales TCS Party, Sales TDS Party
+- **Select** — dropdown, filter (unspecified options)
+- **All** — dropdown (first), filter
+- **All** — dropdown (second), filter
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **Show entries** — dropdown (e.g. 100) controlling rows per page
+- **Per-column filter inputs** — text boxes under Supplier Name, Taka, Meter, Net Meter, Taxable Value headers
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `GO` — applies filters and refreshes table
+- `Print icon` (green) — top right
+- `Excel export icon` (green) — top right
+- `Print` — above table, secondary print trigger
+- Sort arrow — on Supplier Name column
+- Per-row checkbox — Action column, includes/excludes party
+- `Previous` / page numbers / `Next` — pagination
+
+**Table columns:**
+
+| Supplier Name | Taka | Meter | Net Meter | Taxable Value | Invoice Value | Action |
+| ------------- | ---- | ----- | --------- | ------------- | ------------- | ------ |
+
+**Bottom row:** Total row (sums Taka, Meter, Net Meter, Taxable Value, Invoice Value)
+
+### 7.11 TCS Matrix
+
+**Purpose:** Shows a broker-wise matrix of TCS grand totals for a selected voucher type — currently showing no data.
+
+**Navigation:** Home / Accounting / Matrix
+
+**Fields:**
+
+- **Voucher type** — dropdown (e.g. Reciept Voucher)
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Go` — applies filter and refreshes table
+- `Excel` — exports table
+- `PDF` — exports table
+- `Print` — prints table
+- Sort arrows — on Name, Broker columns
+- `Previous` / `Next` — pagination
+
+**Table columns:**
+
+| SR  | Name | Broker | Grand Total |
+| --- | ---- | ------ | ----------- |
+
+**Bottom row:** Total row

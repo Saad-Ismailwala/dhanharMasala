@@ -71,6 +71,8 @@
   - [7.1 Order Sales Report](#71-order-sales-report)
   - [7.2 Order Purchase Report](#72-order-purchase-report)
   - [7.3 Invoice Sales Report](#73-invoice-sales-report)
+  - [7.4 Invoice Purchase Report](#74-invoice-purchase-report)
+  - [7.5 Outstanding Sales Report](#75-outstanding-sales-report)
 
 ## Core Principles & Scope
 
@@ -1828,3 +1830,70 @@ _Rows: Opening Grey, Grey Purchase, Grey Purchase Return, Grey Sales, Grey Sales
 | ---------- | ------- | ------ | ------------ | ----- | ---- | ------- | ---- | -------- | --------- | -------------- | ---- | ---- | ---- | ------ |
 
 **Grouping rows:** When a grouping tab (e.g. Broker City) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "# SURAT") showing aggregated Unit, Quantity, Net Meter, Taxable Amount, SGST, CGST, IGST, and Amount for that group before listing individual line items underneath.
+
+### 7.4 Invoice Purchase Report
+
+**Purpose:** Lists purchase invoices with drill-down groupings (by Item, Broker, City, Party, or combinations), showing invoice-level and supplier-level detail with unit, quantity, net meter, taxable amount, and tax breakup (SGST, CGST, IGST).
+
+**Navigation:** Home / Report / InvoicePurchase
+
+**Fields:**
+
+- **Quality** — multi-select dropdown ("Select Some Options"), filters by item/quality. Appears/disappears depending on which grouping tab is active.
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears when grouping includes Broker.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **Grouping tabs** — button-style toggle group: Item, Broker City, City Broker, Broker Item, Item Broker, City Item, Item City, Broker Party, City Party, Party Item, Item Party
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Print icon` (green) — top right
+- `Go` — applies filters and refreshes table
+- `Sort arrows` — on sortable column headers
+- `Invoice No` — clickable link per row, opens invoice detail
+
+**Table columns:**
+
+| Invoice No | Bale No | Broker | Invoice Date | Supplier | City | Quality | Unit | Quantity | Net Meter | Taxable Amount | SGST | CGST | IGST | Amount |
+| ---------- | ------- | ------ | ------------ | -------- | ---- | ------- | ---- | -------- | --------- | -------------- | ---- | ---- | ---- | ------ |
+
+**Grouping rows:** When a grouping tab (e.g. Broker City, Item Broker) is selected, the table inserts subtotal header rows above each group (e.g. "NO BROKER NAME", "# AHMEDABAD", "# NO BROKER NAME") showing aggregated Unit, Quantity, Net Meter, Taxable Amount, SGST, CGST, IGST, and Amount for that group before listing individual line items underneath. With Item Broker grouping, item-level subtotals contain nested broker-level subtotals.
+
+### 7.5 Outstanding Sales Report
+
+**Purpose:** Lists outstanding (unpaid/partially paid) sales invoices with drill-down groupings (by Broker, City, Area, AreaCode, Party), showing receivable, pending, credit days, and overdue days per invoice, grouped by party/broker/city/area blocks.
+
+**Navigation:** Home / Report / Outstanding Sales
+
+**Fields:**
+
+- **Party** — multi-select dropdown ("Select Some Options"), filters by buyer/party
+- **Broker** — multi-select dropdown ("Select Some Options"), filters by broker. Appears/disappears depending on which grouping tab is active.
+- **City** — multi-select dropdown ("Select Some Options"), filters by city. Appears when grouping includes City.
+- **Area** — multi-select dropdown ("Select Some Options"), filters by area. Appears when grouping includes Area.
+- **AreaCode** — multi-select dropdown ("Select Some Options"), filters by area code. Appears when grouping includes AreaCode.
+- **AccountType** — dropdown ("Select Type"). Appears when grouping includes Area or AreaCode.
+- **Date range** — from date, to date (e.g. 01-04-2023 to 31-03-2024)
+- **View mode** — radio buttons: SubGroup, Group
+- **Grouping tabs** — button-style toggle group: Broker Party, City Party, City Broker, Broker City, Area Party, AreaCode Party
+- **Show entries** — dropdown (e.g. 25) controlling rows per page
+- **Search** — text box, searches across table
+
+**Buttons / Actions:**
+
+- `Heart icon` — next to heading
+- `Gear/settings icon` — top right
+- `Print icon` (green) — top right
+- `Go` — applies filters and refreshes table
+- `Sort arrows` — on sortable column headers
+
+**Table columns:**
+
+| Invoice No | Date | Buyer | Broker | City | Area | AreaCode | Unit | Quantity | Amount | Receive | Pending | Credit Day | Overdue Day | Actual Day |
+| ---------- | ---- | ----- | ------ | ---- | ---- | -------- | ---- | -------- | ------ | ------- | ------- | ---------- | ----------- | ---------- |
+
+**Grouping rows:** When a grouping tab is active (e.g. Broker Party), the table inserts a subtotal header row per party (e.g. "VIMAL TRADING CO") showing aggregated Unit, Quantity, Amount, Receive, and Pending for that party before listing individual invoice line items underneath. Empty result sets (e.g. City Broker, Area Party, AreaCode Party groupings in this dataset) show no rows below the header.
